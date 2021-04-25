@@ -1,22 +1,21 @@
 package com.github.tyrbot.twitchauth;
 
+import com.google.common.io.Resources;
+
 import java.io.IOException;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.google.common.io.Resources;
-
 public class TwitchAuth {
-    
+
     public final static String VERSION;
 
     static {
         String versionBuffer;
         try {
-            List<String> gradleConfigLines = Resources.readLines(Resources.getResource("gradleConfig"),
-                    Charset.forName("utf-8"));
+            List<String> gradleConfigLines = Resources.readLines(Resources.getResource("gradleConfig"), StandardCharsets.UTF_8);
             Map<String, String> configStore = new HashMap<>();
             gradleConfigLines.forEach(line -> {
                 String[] values = line.split("=");
